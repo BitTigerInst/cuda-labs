@@ -1,0 +1,13 @@
+Question:
+In your kernel implementation of tiled matrix multiplication, how many threads
+can be simultaneously scheduled for execution on a GeForce GTX-680 GPU, which
+contains 8 SMs?
+
+
+Answer:
+In our kernel implementation, we use tile with size of 32 by 32, so there will be
+1024 threads in one block. Since only 2048 threads are allowed in one SM in
+GTX-680, one SM could only have 2 blocks of 1024 threads.
+If there are 8 SMs in GTX-680, then the number of the threads can be
+simultaneously scheduled is:
+8 * (2 * 32 * 32) = 16384
